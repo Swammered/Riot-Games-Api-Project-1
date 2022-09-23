@@ -9,7 +9,7 @@ function App() {
   const [gameList, setGameList] = useState([]);
 
   function getPlayerGames(event) {
-    axios.get("http://localhost:4000/past5Games")
+    axios.get("http://localhost:4000/past5Games", { params: {username: searchtext}})
     .then(function (response) {
       setGameList(response.data);
     }).catch(function (error){
@@ -27,6 +27,19 @@ function App() {
       {gameList.length !== 0 ? 
           <>
             <p> we have data </p>
+            {
+              gameList.map((gameData, index) =>
+                <>
+                  <h2> Game {index +1}</h2>
+                    <div>
+                      {gameData.info.participants.map((data,participantIndex) =>
+                        <p>PLAYER {participantIndex + 1}: {data.summonerName}, KDA: {data.kills}, {data.deaths}, {data.assists}</p>
+                      )
+                      }
+                    </div>
+                </>
+              )
+            }
           </>
         :
           <>
