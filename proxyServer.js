@@ -5,6 +5,7 @@ const { response } = require('express');
 
 //START UP PROCESS
 //npm start (express server), split console, cd cleint, npm start (react client)
+//two seperate deploys, deploy the server first 
 
 var app = express();
 
