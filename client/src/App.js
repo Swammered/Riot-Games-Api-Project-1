@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import Button from '@mui/material/Button';
 import logo from './logo.svg';
 import './App.css';
 
@@ -23,6 +24,7 @@ function App() {
     <div className="App">
       <h2>Welcome to our proxy server app!</h2>
       <input type="text" onChange={e => setSearchtext(e.target.value)}></input>
+      <Button variant="contained" onClick={e => getPlayerGames(e)}>Get the past 5 games for your player</Button>
       <button onClick={e => getPlayerGames(e)}>Get the past 5 games for your player</button>
       {gameList.length !== 0 ? 
           <>
